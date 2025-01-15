@@ -3,22 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Financement de la machine à laver</title>
+  <title>Financement de la Machine à Laver</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Comic Sans MS", Arial, sans-serif; /* Fun, playful font */
       text-align: center;
       padding: 20px;
+      background-color: #ffe4e1; /* Light pink background */
+    }
+    h1 {
+      color: #ff69b4; /* Bright pink */
+      font-size: 2.5rem;
+    }
+    p {
+      color: #4b0082; /* Indigo text */
+      font-size: 1.2rem;
     }
     .thermometer {
       width: 50%;
       max-width: 300px;
-      margin: 0 auto;
+      margin: 20px auto;
+      border: 3px solid #ff69b4; /* Pink border */
+      border-radius: 20px;
+      background: url('https://cdn-icons-png.flaticon.com/512/3468/3468447.png') no-repeat center center;
+      background-size: 50%;
     }
     .progress-container {
       width: 100%;
       height: 400px;
-      background-color: #e0e0e0;
+      background-color: #fff0f5; /* Light lavender */
       border-radius: 10px;
       position: relative;
       overflow: hidden;
@@ -27,47 +40,35 @@
       position: absolute;
       bottom: 0;
       width: 100%;
-      background-color: #76c7c0;
+      background-color: #ffb6c1; /* Light pink */
       transition: height 0.3s;
     }
     .label {
       margin-top: 10px;
+      font-size: 1.2rem;
+      color: #4b0082;
+    }
+    .baby-icon {
+      width: 50px;
+      margin: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Finançons la machine à laver à Olivier et Charlotte</h1>
-  <p>Objectif: $<span id="goal">500</span></p>
-  <p>Maintenant: $<span id="raised">0</span></p>
+  <h1>💖 Finançons la machine à laver 💖</h1>
+  <p>Pour Olivier et Charlotte avec amour 🍼</p>
+  <p>🎯 Objectif: $<span id="goal">500</span></p>
+  <p>💰 Montant Collecté: $<span id="raised">250</span></p>
   <div class="thermometer">
     <div class="progress-container">
-      <div class="progress-bar" id="progress-bar" style="height: 0%;"></div>
+      <div class="progress-bar" id="progress-bar" style="height: 50%;"></div>
     </div>
-    <div class="label">0%</div>
+    <div class="label">50%</div>
   </div>
+  <img class="baby-icon" src="https://cdn-icons-png.flaticon.com/512/2784/2784462.png" alt="Baby Bottle">
+  <img class="baby-icon" src="https://cdn-icons-png.flaticon.com/512/2718/2718358.png" alt="Baby Rattle">
+  <img class="baby-icon" src="https://cdn-icons-png.flaticon.com/512/1048/1048956.png" alt="Baby Balloon">
   <br>
-  <button onclick="addContribution()">Ajouter une contribution</button>
-  <script>
-    const goal = 500; // Set your goal amount here
-    let raised = 0;
-
-    document.getElementById("goal").textContent = goal;
-
-    function addContribution() {
-      const amount = parseFloat(prompt("Enter contribution amount:"));
-      if (isNaN(amount) || amount <= 0) {
-        alert("Montant non valide, on ne veux pas de dettes.");
-        return;
-      }
-
-      raised += amount;
-      if (raised > goal) raised = goal;
-
-      const percentage = (raised / goal) * 100;
-      document.getElementById("raised").textContent = raised.toFixed(2);
-      document.querySelector(".label").textContent = `${Math.min(percentage, 100).toFixed(1)}%`;
-      document.getElementById("progress-bar").style.height = `${Math.min(percentage, 100)}%`;
-    }
-  </script>
+  <p><strong>Merci à tous pour votre générosité ! 🥰</strong></p>
 </body>
 </html>
