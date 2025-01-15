@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Financement de la machine à laver</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    .thermometer {
+      width: 50%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+    .progress-container {
+      width: 100%;
+      height: 400px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+    .progress-bar {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background-color: #76c7c0;
+      transition: height 0.3s;
+    }
+    .label {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Finançons la machine à laver à Olivier et Charlotte</h1>
+  <p>Objectif: $<span id="goal">500</span></p>
+  <p>Maintenant: $<span id="raised">0</span></p>
+  <div class="thermometer">
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar" style="height: 0%;"></div>
+    </div>
+    <div class="label">0%</div>
+  </div>
+  <br>
+  <button onclick="addContribution()">Ajouter une contribution</button>
+  <script>
+    const goal = 500; // Set your goal amount here
+    let raised = 0;
+
+    document.getElementById("goal").textContent = goal;
+
+    function addContribution() {
+      const amount = parseFloat(prompt("Enter contribution amount:"));
+      if (isNaN(amount) || amount <= 0) {
+        alert("Montant non valide, on ne veux pas de dettes.");
+        return;
+      }
+
+      raised += amount;
+      if (raised > goal) raised = goal;
+
+      const percentage = (raised / goal) * 100;
+      document.getElementById("raised").textContent = raised.toFixed(2);
+      document.querySelector(".label").textContent = `${Math.min(percentage, 100).toFixed(1)}%`;
+      document.getElementById("progress-bar").style.height = `${Math.min(percentage, 100)}%`;
+    }
+  </script>
+</body>
+</html>
